@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>Connections — Guess the Movie</title>
+<meta name="description" content="A visual rebus game: guess the movie from image clues. Hollywood and Kollywood editions." />
+<style>
+  html, body { margin: 0; padding: 0; background: #0F0E17; min-height: 100vh; }
+  #root { display: flex; align-items: flex-start; justify-content: center; padding: 24px 12px; min-height: 100vh; box-sizing: border-box; }
+  @media (max-width: 480px) { #root { padding: 12px 8px; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+
+<script>
+  window.addEventListener("load", function () {
+    if (typeof React === "undefined" || typeof ReactDOM === "undefined" || typeof Babel === "undefined") {
+      document.getElementById("root").innerHTML =
+        '<div style="color:#FFFAEB;font-family:sans-serif;text-align:center;padding:40px 20px;max-width:480px;">' +
+        '<h2 style="color:#E85D4C;">Couldn\'t load game files</h2>' +
+        '<p>Your browser or network blocked a required script (React/Babel) from loading. ' +
+        'Try disabling any ad blocker or tracking prevention for this site, or use a different browser, then refresh.</p>' +
+        "</div>";
+    }
+  });
+</script>
+
+<script type="text/babel" data-presets="react" src="game-component.jsx"></script>
+<script type="text/babel" data-presets="react">
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<ConnectionsGame />);
+</script>
+</body>
+</html>
